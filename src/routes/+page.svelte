@@ -143,7 +143,7 @@
         data={{
             flip: true,
             img: {
-                src: `${base}/${orthodonticsMembershipSVG}`,
+                src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
             },
             title: {
@@ -180,7 +180,7 @@
         {isCurrentLangAr}
         data={{
             img: {
-                src: `${base}/${orthodonticsMembershipSVG}`,
+                src: `${base}${orthodonticsMembershipSVG}`,
                 alt: "Membership in Orthodontics"
             },
             title: {
