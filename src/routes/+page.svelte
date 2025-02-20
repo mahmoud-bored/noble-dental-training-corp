@@ -6,6 +6,7 @@
     import Card from "./Card.svelte";
   import CollapseCard from "./CollapseCard.svelte";
   import ContactForm from "./ContactForm.svelte";
+  import { base } from "$app/paths";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
     $inspect(isCurrentLangAr)
 </script>
@@ -91,7 +92,7 @@
         {isCurrentLangAr}
         data={{
             img: {
-                src: orthodonticsMembershipSVG,
+                src: `${base}${orthodonticsMembershipSVG}`,
                 alt: "Membership in Orthodontics"
             },
             title: {
@@ -142,7 +143,7 @@
         data={{
             flip: true,
             img: {
-                src: orthodonticsMembershipSVG,
+                src: `${base}/${orthodonticsMembershipSVG}`,
                 alt: "Membership in Orthodontics"
             },
             title: {
@@ -179,7 +180,7 @@
         {isCurrentLangAr}
         data={{
             img: {
-                src: orthodonticsMembershipSVG,
+                src: `${base}/${orthodonticsMembershipSVG}`,
                 alt: "Membership in Orthodontics"
             },
             title: {
