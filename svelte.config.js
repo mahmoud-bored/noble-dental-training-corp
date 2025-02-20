@@ -21,7 +21,7 @@ const config = {
 	},
 	paths: {
 		base: process.argv.includes('dev') ? '' : '/noble-dental-training-corp'
-	}
+	},
 };
 
 export default config;
