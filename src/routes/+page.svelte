@@ -4,9 +4,8 @@
     import { langPreference } from "./stores.svelte";
     import orthodonticsMembershipSVG from "$lib/assets/orthodontics-membership.svg"
     import Card from "./Card.svelte";
-  import CollapseCard from "./CollapseCard.svelte";
-  import ContactForm from "./ContactForm.svelte";
-  import { base } from "$app/paths";
+    import CollapseCard from "./CollapseCard.svelte";
+    import ContactForm from "./ContactForm.svelte";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
     $inspect(isCurrentLangAr)
 </script>
@@ -92,7 +91,7 @@
         {isCurrentLangAr}
         data={{
             img: {
-                src: `${base}${orthodonticsMembershipSVG}`,
+                src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
             },
             title: {
@@ -180,7 +179,7 @@
         {isCurrentLangAr}
         data={{
             img: {
-                src: `${base}${orthodonticsMembershipSVG}`,
+                src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
             },
             title: {
