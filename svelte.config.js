@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { importAssets } from 'svelte-preprocess-import-assets'
 import { enhancedImages } from '@sveltejs/enhanced-img';
@@ -18,6 +18,9 @@ const config = {
 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter()
+	},
+	paths: {
+		base: process.argv.includes('dev') ? '' : '/noble-dental-training-corp'
 	}
 };
 
