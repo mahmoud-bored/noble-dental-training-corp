@@ -9,10 +9,6 @@
             src: string,
             alt?: string
         },
-        title: {
-            en: string,
-            ar: string
-        },
         button?: {
             text: {
                 en: string,
@@ -23,7 +19,7 @@
             type?: "action" | "link"
         }
     }
-    let { data, description, isCurrentLangAr }: { data: Data, description: Snippet, isCurrentLangAr: boolean } = $props()
+    let { data, description, title, isCurrentLangAr }: { data: Data, description: Snippet, title: Snippet, isCurrentLangAr: boolean } = $props()
     let isFormatRTL = $state(isCurrentLangAr)
     $effect(() => {
         if(data.flip) isFormatRTL = !isCurrentLangAr
@@ -74,9 +70,7 @@
                 dir={ isCurrentLangAr ? "rtl" : "ltr" }
                 in:fly={{ x: isCurrentLangAr ? 50 : -50, y: -10, duration: 250 }}
             >
-                <h2 class="text-2xl font-bold">
-                    { isCurrentLangAr ? data.title.ar : data.title.en }
-                </h2>
+                {@render title()}
 
                 {@render description()}
 
@@ -125,9 +119,8 @@
 
     <div class="w-9/10 bg-navy-50 drop-shadow-lg h-full flex justify-center items-center flex-col rounded-lg p-6 md:hidden">
         <div class="w-full h-full flex flex-col justify-center items-center gap-4" dir={isCurrentLangAr ? "rtl" : "ltr"}>
-            <h2 class="text-2xl font-bold text-center">
-                { isCurrentLangAr ? data.title.ar : data.title.en }
-            </h2>
+            {@render title()}
+            
             <div class="w-full flex justify-center items-center">
                 <img 
                     src={ data.img.src } 

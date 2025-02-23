@@ -6,6 +6,7 @@
     import Card from "./Card.svelte";
     import CollapseCard from "./CollapseCard.svelte";
     import ContactForm from "./ContactForm.svelte";
+    import FrequentQuestionsSection from "./FrequentQuestionsSection.svelte";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
     $inspect(isCurrentLangAr)
 </script>
@@ -22,8 +23,11 @@
                         <h1 class="font-bold text-3xl">
                             برنامج الزمالة البريطانية لتقويم الأسنان
                         </h1>
-                        <p class="text-lg max-w-[420px] mr-4">
-                            احصل على تأهيل شامل وعملي لتحقق طموحك المهني بإشراف استشاريين معتمدين.
+                        <h2 class="text-xl mt-2 mr-2 font-bold">
+                            احصل على الزمالة البريطانية في تقويم الأسنان وكن ضمن النخبة!
+                        </h2>
+                        <p class="text-lg mr-4">
+                            هل تطمح إلى التميز في تقويم الأسنان؟ هل تريد الحصول على الزمالة البريطانية بأفضل طريقة ممكنة؟ هذا البرنامج مصمم خصيصًا لك! استثمر في مستقبلك وانضم إلى أقوى برنامج تدريبي يجمع بين العلم والخبرة العملية.
                         </p>
                         <a href="#contact-us">
                             <button class="mr-4 bg-gold-500 p-4 px-6 w-56 h-14 cursor-pointer font-bold text-xl rounded-lg flex justify-between items-center hover:bg-gold-600 transition duration-200">
@@ -73,30 +77,13 @@
     <hr class="w-8/10 max-w-32 border-2 rounded-full border-navy-600">
 
 
-    {#snippet card1Description()}
-        <p class={[
-            isCurrentLangAr ? "mr-4" : "ml-4", 
-            "w-full",
-            "md:w-9/10",
-            ]}
-        >
-            {
-                isCurrentLangAr ? 
-                    "الزمالة البريطانية لطب الأسنان هي برنامج تدريبي متقدم ومُعتمد يُقدم من قبل الكليات الملكية والجمعيات البريطانية المعنية بطب الأسنان، مثل الكلية الملكية للجراحين في إنجلترا، إدنبرة، أو أيرلندا. تهدف الزمالة إلى تحسين المهارات السريرية والأكاديمية للأطباء ومساعدتهم على تحقيق مستويات عالية من التميز المهني." 
-                    : "The British Fellowship in Dentistry is an advanced and accredited training program offered by the Royal Colleges and British dental associations, such as the Royal College of Surgeons in England, Edinburgh, or Ireland. The fellowship aims to enhance clinicians' clinical and academic skills and support them in achieving high levels of professional excellence."
-            }
-        </p>
-    {/snippet}
+
     <Card 
         {isCurrentLangAr}
         data={{
             img: {
                 src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
-            },
-            title: {
-                en: "What is the British Orthodontics Membership?",
-                ar: "ما هي الزمالة البريطانية؟"
             },
             button: {
                 text: {
@@ -106,48 +93,38 @@
                 arrowVisible: true,
             }
         }}
-        description={card1Description}
-    />
+    > 
+        {#snippet title()}
+            <h2 class="text-2xl font-bold text-center">
+                { isCurrentLangAr ? "ما هي الزمالة البريطانية؟" : "What is the British Orthodontics Membership?" }
+            </h2>
+        {/snippet}
 
-
-
-
-    {#snippet card2Description()}
-        <ul 
-            class={[
-                isCurrentLangAr ? "mr-8" : "ml-2", 
-                "w-full", 
+        {#snippet description()}
+            <p class={[
+                isCurrentLangAr ? "mr-4" : "ml-4", 
+                "w-full",
                 "md:w-9/10",
-                "list-disc",
-            ]}
-        >
-            {#if isCurrentLangAr}
-                <li>تدريب نظري شامل يغطي مناهج الزمالة البريطانية (6 أشهر أونلاين).</li>
-                <li>تدريب عملي مكثف مع العمل على 20 حالة تقويم أسنان على الأقل.</li>
-                <li>إشراف استشاريين معتمدين حاصلين على الزمالة البريطانية.</li>
-                <li>الإقامة مجانية ومجهزة بالكامل.</li>
-                <li>دعم عملي مباشر بمساعدة مرافق أثناء العمل.</li>
-            {:else}
-                <li>Comprehensive theoretical training covering the British Fellowship curricula (6 months online).</li>
-                <li>Intensive practical training, including work on at least 20 orthodontic cases.</li>
-                <li>Supervision by accredited consultants who hold the British Fellowship.</li>
-                <li>Free and fully equipped accommodation.</li>
-                <li>Direct practical support with assistance from onsite staff during work.</li>
-            {/if}
-        </ul>
-    {/snippet}
+                ]}
+            >
+                {
+                    isCurrentLangAr ? 
+                        "الزمالة البريطانية لطب الأسنان هي برنامج تدريبي متقدم ومُعتمد يُقدم من قبل الكليات الملكية والجمعيات البريطانية المعنية بطب الأسنان، مثل الكلية الملكية للجراحين في إنجلترا، إدنبرة، أو أيرلندا. تهدف الزمالة إلى تحسين المهارات السريرية والأكاديمية للأطباء ومساعدتهم على تحقيق مستويات عالية من التميز المهني." 
+                        : "The British Fellowship in Dentistry is an advanced and accredited training program offered by the Royal Colleges and British dental associations, such as the Royal College of Surgeons in England, Edinburgh, or Ireland. The fellowship aims to enhance clinicians' clinical and academic skills and support them in achieving high levels of professional excellence."
+                }
+            </p>
+        {/snippet}
+    </Card>
+
+
+
     <Card 
         {isCurrentLangAr}
-        description={card2Description}
         data={{
             flip: true,
             img: {
                 src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
-            },
-            title: {
-                en: "Why Choose Our Program?",
-                ar: "لماذا تختار برنامجنا التدريبي؟"
             },
             button: {
                 text: {
@@ -158,44 +135,86 @@
                 arrowVisible: true,
             }
         }}
-    />
-
-    {#snippet card3Description()}
-        <p class={[
-            isCurrentLangAr ? "mr-4" : "ml-4", 
-            "w-full",
-            "md:w-9/10",
-            ]}
-        >
-            {
-                isCurrentLangAr ? 
-                    "لكي تتأكد ما إذا كان برنامجنا التدريبي لزمالة الأسنان البريطانية مناسب لك، فقد اعددنا اختبار مخصص من 15 سؤال لتحديد مدى تناسبك مع هذا البرنامج." 
-                    : "To ensure whether our training program for the British Dental Fellowship is suitable for you, we have prepared a customized 15-question test to determine your compatibility with the program."
-            }
-        </p>
-    {/snippet}
+    >
+        {#snippet title()}
+            <h2 class="text-2xl font-bold text-center">
+                { isCurrentLangAr ? "لماذا يجب أن تسجل الآن؟" : "Why Choose Our Program?" }
+            </h2>
+        {/snippet}
+        {#snippet description()}
+            <ul 
+                class={[
+                    isCurrentLangAr ? "mr-8" : "ml-2", 
+                    "w-full", 
+                    "md:w-9/10",
+                    "list-disc",
+                ]}
+            >
+                {#if isCurrentLangAr}
+                    <li>تدريب عملي حصري: لا مزيد من التعلم النظري فقط، ستعالج 20 مريضًا حقيقيًا بإشراف نخبة من المتخصصين.</li>
+                    <li>مرونة كاملة لأطباء الخليج: تابع دراستك وأنت تعمل، مع نظام متابعة عملي في مصر كل 4-5 أسابيع.</li>
+                    <li>تحضير شامل للزمالة: منهج متكامل، محاضرات تفاعلية، ودعم مستمر لضمان اجتيازك للاختبار بثقة.</li>
+                    <li>دعم من أفضل الخبراء: تعلم مباشرة من استشاريي تقويم الأسنان المعتمدين، واكتسب أسرار النجاح في المجال.</li>
+                    <li>فرصة حصرية – عدد محدود من المقاعد! لا تضيع الوقت، فالفرص لا تتكرر كثيرًا! 🕒</li>
+                {:else}
+                    <li>Comprehensive theoretical training covering the British Fellowship curricula (6 months online).</li>
+                    <li>Intensive practical training, including work on at least 20 orthodontic cases.</li>
+                    <li>Supervision by accredited consultants who hold the British Fellowship.</li>
+                    <li>Free and fully equipped accommodation.</li>
+                    <li>Direct practical support with assistance from onsite staff during work.</li>
+                {/if}
+            </ul>
+        {/snippet}
+    </Card>
+    
     <Card 
-        description={card3Description}
         {isCurrentLangAr}
         data={{
+            flip: true,
             img: {
                 src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
             },
-            title: {
-                en: "Is This Program Right For You?",
-                ar: "هل هذا البرنامج التدريبي مناسب لك؟"
-            },
             button: {
                 text: {
-                    en: "Take a test",
-                    ar: "دخول الإختبار"
+                    en: "Enroll Now",
+                    ar: "سجل الآن"
                 },
-                link: '/test',
-                type: "action"
+                link: '/contact-us',
+                arrowVisible: true,
             }
         }}
-    />
+    >
+        {#snippet title()}
+            <h2 class="text-2xl font-bold text-center">
+                { isCurrentLangAr ? "ماذا ستحصل عليه عند التسجيل؟" : "Why Choose Our Program?" }
+            </h2>
+        {/snippet}
+        {#snippet description()}
+            <ul 
+                class={[
+                    isCurrentLangAr ? "mr-8" : "ml-2", 
+                    "w-full", 
+                    "md:w-9/10",
+                    "list-disc",
+                ]}
+            >
+                {#if isCurrentLangAr}
+                    <li>برنامج تدريبي شامل لمدة 3 سنوات – 6 أشهر محاضرات أونلاين، وسنتان ونصف من التطبيق العملي.</li>
+                    <li>تجربة فريدة من نوعها – ستعمل على حالات حقيقية من اليوم الأول.</li>
+                    <li>دروس مباشرة ومسجلة – تابع التعلم وفق جدولك الزمني.</li>
+                    <li>فرصة استثنائية للأطباء العاملين في الخليج – بدون الحاجة لترك وظيفتك!</li>
+                    <li>شهادة إتمام معتمدة تؤهلك لاجتياز اختبار الزمالة البريطانية.</li>
+                {:else}
+                    <li>Comprehensive theoretical training covering the British Fellowship curricula (6 months online).</li>
+                    <li>Intensive practical training, including work on at least 20 orthodontic cases.</li>
+                    <li>Supervision by accredited consultants who hold the British Fellowship.</li>
+                    <li>Free and fully equipped accommodation.</li>
+                    <li>Direct practical support with assistance from onsite staff during work.</li>
+                {/if}
+            </ul>
+        {/snippet}
+    </Card>
     
 
     <section class="w-full flex flex-col justify-center items-center gap-8">
@@ -209,60 +228,8 @@
                 }
             </h2>
         {/key}
-        <div class="w-8/10 max-w-[1000px] flex justify-center items-center gap-4 flex-wrap flex-col md:flex-row">
-            <CollapseCard 
-                {isCurrentLangAr}
-                content={{
-                    title: {
-                        en: "Lorem ipsum dolor sit amet, consectetur?",
-                        ar: "بقبق تلاق يبق تقنق لق فق؟"
-                    },
-                    text:{
-                        en: "meh.",
-                        ar: "مه."
-                    }
-                }}
-            />
-            <CollapseCard 
-                {isCurrentLangAr}
-                content={{
-                    title: {
-                        en: "Lorem ipsum dolor sit amet, consectetur?",
-                        ar: "بقبق تلاق يبق تقنق لق فق؟"
-                    },
-                    text:{
-                        en: "meh.",
-                        ar: "مه."
-                    }
-                }}
-            />
-            <CollapseCard 
-                {isCurrentLangAr}
-                content={{
-                    title: {
-                        en: "Lorem ipsum dolor sit amet, consectetur?",
-                        ar: "بقبق تلاق يبق تقنق لق فق؟"
-                    },
-                    text:{
-                        en: "meh.",
-                        ar: "مه."
-                    }
-                }}
-            />
-            <CollapseCard 
-                {isCurrentLangAr}
-                content={{
-                    title: {
-                        en: "Lorem ipsum dolor sit amet, consectetur?",
-                        ar: "بقبق تلاق يبق تقنق لق فق؟"
-                    },
-                    text:{
-                        en: "meh.",
-                        ar: "مه."
-                    }
-                }}
-            />
-        </div>
+        
+        <FrequentQuestionsSection {isCurrentLangAr} />
 
         <hr id="contact-us" class="w-8/10 max-w-48 border rounded-full border-navy-900" />
 
