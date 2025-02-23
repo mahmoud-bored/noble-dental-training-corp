@@ -23,7 +23,7 @@
 <svelte:window on:resize={setCardMaxHeight}/>
 
 {#key isCurrentLangAr}
-    <div class="w-full md:max-w-[calc(50%_-_8px)] relative" in:fly={{ x: isCurrentLangAr ? 40 : -40, y: -20, duration: 200 }}>
+    <div class="w-full md:max-w-[calc(50%_-_8px)] relative min-h-14" in:fly={{ x: isCurrentLangAr ? 40 : -40, y: -20, duration: 200 }}>
         <button 
             class={[
                 "shadow-md", 
