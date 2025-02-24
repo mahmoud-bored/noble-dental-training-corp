@@ -232,7 +232,6 @@
     <Card 
         {isCurrentLangAr}
         data={{
-            flip: true,
             img: {
                 src: orthodonticsMembershipSVG,
                 alt: "Membership in Orthodontics"
