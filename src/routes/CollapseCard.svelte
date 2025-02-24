@@ -17,7 +17,6 @@
         }
     }
     onMount(setCardMaxHeight)
-    $inspect(cardMaxHeight)
 </script>
 
 <svelte:window on:resize={setCardMaxHeight}/>

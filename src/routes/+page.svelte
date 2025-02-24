@@ -7,12 +7,74 @@
     import CollapseCard from "./CollapseCard.svelte";
     import ContactForm from "./ContactForm.svelte";
     import FrequentQuestionsSection from "./FrequentQuestionsSection.svelte";
+  import { page } from "$app/state";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
-    $inspect(isCurrentLangAr)
+
+
+    let loading = $state(false)
+    let loadingSuccess = $state(false)
+    let loadingError = $state(false)
+
+    $effect(() => {
+        if(page.form?.success === true) {
+            loadingSuccess = true
+        } else if(page.form?.success === false) {
+            loadingError = true
+        }
+    })
 </script>
 
+{#if loading}   
+    <div class="fixed left-0 top-0 w-full h-full bg-[#00000080] z-20" transition:fade={{ duration: 200 }}></div>
+    <div class="fixed left-0 top-0 w-full h-full flex justify-center items-center z-30" in:fly={{ y: 20, duration: 200 }} out:fly={{ y: 20, duration: 200 }}>
+        <div class="h-9/10 w-9/10 max-h-80 max-w-96 rounded-lg bg-navy-50 flex flex-col justify-center items-center p-3">
+            
+            <div class="relative w-full h-full flex flex-col justify-center items-center gap-2">
 
-
+                {#if loadingSuccess}
+                    <svg width="140" height="140" viewBox="0 0 189 191" fill="none" xmlns="http://www.w3.org/2000/svg" in:fly={{ y: -10, duration: 300 }}>
+                        <path d="M94.5 188.5C145.336 188.5 186.5 146.836 186.5 95.5C186.5 44.1638 145.336 2.5 94.5 2.5C43.6637 2.5 2.5 44.1638 2.5 95.5C2.5 146.836 43.6637 188.5 94.5 188.5Z" stroke="#20BF55" stroke-width="5"/>
+                        <path d="M49 97.8571L77.5441 126.3C77.9331 126.687 78.562 126.689 78.9527 126.303L141 65" stroke="#20BF55" stroke-width="9" stroke-linecap="round"/>
+                    </svg>
+                    <p class="text-2xl" in:fly={{ y: -10, duration: 300 }}>
+                        { isCurrentLangAr ? "تم الإرسال!" : "Sent!" }
+                    </p>
+                {:else if loadingError}
+                    <svg width="140" height="140" viewBox="0 0 189 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M94.5 188.5C145.336 188.5 186.5 146.836 186.5 95.5C186.5 44.1638 145.336 2.5 94.5 2.5C43.6637 2.5 2.5 44.1638 2.5 95.5C2.5 146.836 43.6637 188.5 94.5 188.5Z" stroke="#BE2E2E" stroke-width="5"/>
+                        <path d="M129 62L61 130" stroke="#BE2E2E" stroke-width="9" stroke-linecap="round"/>
+                        <path d="M61 62L129 130" stroke="#BE2E2E" stroke-width="9" stroke-linecap="round"/>
+                    </svg>
+                    <p class="text-xl text-center w-9/10 " dir={ isCurrentLangAr ? "rtl" : "ltr" } in:fly={{ y: -10, duration: 300 }}>
+                        { isCurrentLangAr ? "حدث خطأ! يرجى المحاولة مرة اخرى لاحقا." : "Error! Try Again Later." }
+                    </p>
+                {:else}
+                    <p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-navy-900">
+                        { isCurrentLangAr ? "جار الإرسال..." : "Sending..."}
+                    </p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; display: block;" width="225" height="225">
+                        <g>
+                            <path stroke="none" fill="#1e2357" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"><animateTransform values="0 50 51;360 50 51" keyTimes="0;1" repeatCount="indefinite" dur="1s" type="rotate" attributeName="transform"></animateTransform></path><g></g>
+                        </g>
+                    </svg>
+                {/if}
+            </div>
+            <div class="w-full flex justify-center items-center h-10">
+                {#if loadingError || loadingSuccess } 
+                    <button 
+                        class="bg-navy-500 hover:bg-navy-600 transition p-3 rounded-md text-white cursor-pointer h-full flex justify-center items-center w-18" 
+                        in:fly={{ y: -5, duration: 300 }}
+                        onclick={() => { loading = false; loadingSuccess = false; loadingError = false }}
+                        >
+                        { isCurrentLangAr ? "اغلاق" : "Close" }
+                    </button>
+                {/if}
+            </div>
+                
+        </div> 
+    </div>
+{/if}
+    
 <main class="h-full w-full flex flex-col items-center gap-10">
     <section class="w-full h-[calc(100vh-64px)] max-h-screen">
         <div class="w-full h-full relative">
@@ -254,7 +316,7 @@
             <div class="w-full flex justify-center items-center flex-col md:flex-row" dir={ isCurrentLangAr ? "rtl" : "ltr" }>
                 {#key isCurrentLangAr}
                     <div class="w-full md:w-6/10" in:fly={{ x: isCurrentLangAr ? 20 : -20, y: -20, duration: 200 }}>
-                        <ContactForm {isCurrentLangAr} />
+                        <ContactForm {isCurrentLangAr} bind:loading {loadingSuccess} {loadingError} />
                     </div>
                 {/key}
                 

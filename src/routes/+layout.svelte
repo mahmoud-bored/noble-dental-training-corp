@@ -31,7 +31,7 @@
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
 </script>
 
-<nav class="sticky top-0 z-50 h-16 py-8 w-full flex justify-center bg-linear-90 from-[#2F333F] via-[#12151E] to-[#12151E]">
+<nav class="sticky top-0 z-10 h-16 py-8 w-full flex justify-center bg-linear-90 from-[#2F333F] via-[#12151E] to-[#12151E]">
     <div class="w-9/10 h-full flex justify-between items-center">
         <div class="w-[calc(100%_-_80px)]">
             <svg class="h-20" viewBox="0 0 694 181" fill="none" xmlns="http://www.w3.org/2000/svg">
