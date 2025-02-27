@@ -88,7 +88,7 @@
                         <h2 class="text-xl mt-2 mr-2 font-bold">
                             احصل على الزمالة البريطانية في تقويم الأسنان وكن ضمن النخبة!
                         </h2>
-                        <p class="text-lg mr-4">
+                        <p class="text-lg mr-4 max-w-[850px]">
                             هل تطمح إلى التميز في تقويم الأسنان؟ هل تريد الحصول على الزمالة البريطانية بأفضل طريقة ممكنة؟ هذا البرنامج مصمم خصيصًا لك! استثمر في مستقبلك وانضم إلى أقوى برنامج تدريبي يجمع بين العلم والخبرة العملية.
                         </p>
                         <a href="#contact-us">
@@ -108,7 +108,7 @@
                         <h1 class="font-bold text-3xl">
                             England MOrth Training Corp.
                         </h1>
-                        <p class="text-lg max-w-[420px] ml-4">
+                        <p class="text-lg max-w-[850px] ml-4">
                             Get comprehensive and practical training to achieve your professional ambition under the supervision of certified consultants.
                         </p>
                         <a href="#contact-us">
