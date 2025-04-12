@@ -7,7 +7,10 @@
     import CollapseCard from "./CollapseCard.svelte";
     import ContactForm from "./ContactForm.svelte";
     import FrequentQuestionsSection from "./FrequentQuestionsSection.svelte";
-  import { page } from "$app/state";
+    import Button from "./Button.svelte";
+    import { page } from "$app/state";
+  import CheckCircle from "./CheckCircle.svelte";
+  import TextMark from "./TextMark.svelte";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
 
 
@@ -76,219 +79,390 @@
 {/if}
     
 <main class="h-full w-full flex flex-col items-center gap-10">
-    <section class="w-full h-[calc(100vh-64px)] max-h-screen">
-        <div class="w-full h-full relative">
 
-            <div class="h-full w-full flex justify-center items-center text-white">
-                {#if isCurrentLangAr}
-                    <div class="w-8/10 flex justify-center items-start flex-col gap-3" in:fly={{ x: 50, duration: 200 }} dir="rtl">
-                        <h1 class="font-bold text-3xl">
-                            برنامج الزمالة البريطانية لتقويم الأسنان
-                        </h1>
-                        <h2 class="text-xl mt-2 mr-2 font-bold">
-                            احصل على الزمالة البريطانية في تقويم الأسنان وكن ضمن النخبة!
-                        </h2>
-                        <p class="text-lg mr-4 max-w-[850px]">
-                            هل تطمح إلى التميز في تقويم الأسنان؟ هل تريد الحصول على الزمالة البريطانية بأفضل طريقة ممكنة؟ هذا البرنامج مصمم خصيصًا لك! استثمر في مستقبلك وانضم إلى أقوى برنامج تدريبي يجمع بين العلم والخبرة العملية.
-                        </p>
-                        <a href="#contact-us">
-                            <button class="mr-4 bg-gold-500 p-4 px-6 w-56 h-14 cursor-pointer font-bold text-xl rounded-lg flex justify-between items-center hover:bg-gold-600 transition duration-200">
-                                <span>
-                                    سجل الآن
-                                </span>
-                                <svg width="51" height="20" viewBox="0 0 51 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M47.9998 15L6.99975 15" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                                    <path d="M18.8 27L4.24558 16.1385C3.14533 15.3174 3.1805 13.6573 4.31453 12.8835L18.8 3" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                                </svg>
-                            </button>
-                        </a>
+    <section id="home" class="w-full flex justify-center items-center bg-gradient-to-b from-blue-50 to-white">
+        <div class={[
+            "max-w-[1400px]", 
+            "w-full", 
+            "flex",
+            "justify-around",
+            "items-center",
+            "gap-12",
+            "flex-col-reverse",
+            isCurrentLangAr ? "md:flex-row" : "md:flex-row-reverse",
+            "my-32",
+            "font-tajawal",
+            "px-8"
+            ]}>
+
+            <div class="max-w-[400px] w-full md:w-4/10">
+                <div class="w-full aspect-square bg-[#eaeaea] shadow-2xl rounded-2xl"></div>
+            </div>
+            <div class="flex flex-col gap-6" dir="auto">
+                <TextMark>2025</TextMark>
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl space-y-4">
+                    { isCurrentLangAr ? "الزمالة البريطانية" : "The British Fellowship" }
+                    <br>
+                    <span class="text-primary">
+                        { isCurrentLangAr ? "في تقويم الأسنان" : "In Orthodontics" }
+                    </span>
+                </h1>
+                <p class="text-lg text-gray-600 md:text-xl max-w-md">
+                    {
+                        isCurrentLangAr ?
+                            "برنامج تدريبي متكامل يؤهلك للحصول على الزمالة البريطانية في تقويم الأسنان دون الحاجة للتفرغ الكامل"
+                            : "Comprehensive training program equips you with the British Fellowship in Orthodontics without the need to sacrifice your career."
+                    }
+                    
+                </p>
+                <div>
+                    <Button>
+                        { isCurrentLangAr ? "سجل الآن" : "Enroll Now" }
+                    </Button>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div class="grid grid-rows-2 grid-cols-2 space-y-2 place-items-baseline">
+                        <CheckCircle>
+                            { isCurrentLangAr ? "تدريب عملي شامل" : "Comprehensive Training" }
+                        </CheckCircle>
+                        <CheckCircle>
+                            { isCurrentLangAr ? "مرونة في الوقت" : "Flexible Schedule" }
+                        </CheckCircle>
+                        <CheckCircle>
+                            { isCurrentLangAr ? "إشراف متخصص" : "Expert Supervision" }
+                        </CheckCircle>
+                        <CheckCircle>
+                            { isCurrentLangAr ? "شهادة معتمدة" : "Certified Certificate" }
+                        </CheckCircle>
                     </div>
-                {:else}
-                    <div class="w-8/10 flex justify-center items-start flex-col gap-3" in:fly={{ x: -50, duration: 200 }} dir="ltr">
-                        <h1 class="font-bold text-3xl">
-                            England MOrth Training Corp.
-                        </h1>
-                        <p class="text-lg max-w-[850px] ml-4">
-                            Get comprehensive and practical training to achieve your professional ambition under the supervision of certified consultants.
-                        </p>
-                        <a href="#contact-us">
-                            <button class="ml-4 bg-gold-500 p-4 px-6 w-56 h-14 cursor-pointer font-bold text-xl rounded-lg flex justify-between items-center hover:bg-gold-600 transition duration-200">
-                                <span>
-                                    Enroll Now
-                                </span>
-                                <svg width="51" height="20" viewBox="0 0 51 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 15L44 15" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                                    <path d="M32.1997 27L46.7542 16.1385C47.8544 15.3174 47.8193 13.6573 46.6852 12.8835L32.1997 3" stroke="white" stroke-width="5" stroke-linecap="round"/>
-                                </svg>
-                            </button>
-                        </a>
-                    </div>
-                {/if}
+                </div>
             </div>
 
-            <div class="absolute top-0 z-[-1] w-full h-full flex justify-center items-center overflow-hidden bg-[url($lib/assets/main-page-bg.png)] bg-center">
-                {#if isCurrentLangAr}
-                    <div class="w-full h-full absolute bg-linear-90 from-black/50 via-black/70 to-black/80" transition:fade={{ duration: 100 }}></div>
-                {:else}
-                    <div class="w-full h-full absolute -bg-linear-90 from-black/50 via-black/70 to-black/80" transition:fade={{ duration: 100 }}></div>
-                {/if}
+        </div>
+    </section>
+
+
+    <section id="what_we_offer" class="w-full flex flex-col justify-center items-center gap-4 border-y border-gray-300 bg-white py-16 px-8">
+        <div class="flex flex-col justify-center items-center max-w-2xl">
+            
+            <div class="w-full flex justify-center items-center">
+                <TextMark>
+                    { isCurrentLangAr ? "ماذا نقدم لك" : "What Do We Offer" }
+                </TextMark>
+            </div>
+            <h2 class="mt-2 mb-4 text-3xl text-center font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl font-tajawal leading-14">
+                { isCurrentLangAr ? "برنامج تدريبي متكامل" : "Comprehensive Training Program That" }
+                <span class="text-primary">
+                    { isCurrentLangAr ? "يناسب ظروفك" : "Suits Your Needs" }
+                </span>
+            </h2>
+            <p class="text-lg text-center text-gray-600 font-tajawal">
+                {
+                    isCurrentLangAr ?
+                    "دون أن تضطر إلى ترك عملك بالخارج، نقدم لك تجربة تعليمية فريدة تجمع بين المرونة والجودة العالية"
+                    : "Without sacrificing your job, we offer a unique educational experience that combines the best of both worlds."
+                }
+                
+            </p>
+
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-7 w-7">
+                        <path d="M12 7v14"></path>
+                        <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "محاضرات نظرية اونلاين" : "Online Theoretical Lectures" }
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { 
+                        isCurrentLangAr ?
+                        "محاضرات نظرية اونلاين في تقويم الاسنان تغطي كافة الأساسيات والمفاهيم المتقدمة بطريقة تفاعلية."
+                        : "Online theoretical lectures in orthodontics covering all the basics and advanced concepts in an interactive way."
+                    }
+                </p>
+            </div>
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users h-7 w-7">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "تدريب عملي شامل" : "Comprehensive Hands-On Training" } 
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { isCurrentLangAr ? 
+                        "تدريب عملي على 20-40 حالة تغطي اغلب الحالات البسيطة والمتقدمة تحت إشراف استشاريين متخصصين."
+                        : "Practical training on 20–40 cases, covering most simple and advanced scenarios under the supervision of specialized consultants."
+                    }
+                </p>
+            </div>
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-7 w-7">
+                        <path d="M8 2v4"></path><path d="M16 2v4"></path>
+                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                        <path d="M3 10h18"></path>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "متابعة دورية" : "Regular Follow-Up" }
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { 
+                        isCurrentLangAr ? 
+                            "ستكون المتابعات مرة كل 4-5 اسابيع لضمان التقدم المستمر مع مرونة في تحديد المواعيد."
+                            : "Follow-ups will take place every 4–5 weeks to ensure continuous progress, with flexibility in scheduling appointments."
+                    }
+                </p>
+            </div>
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big h-7 w-7">
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                        <path d="m9 11 3 3L22 4"></path>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "تدريب على جميع التقنيات" : "Training on All Techniques" }
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { 
+                        isCurrentLangAr ? 
+                            "سيتم تدريبك على التقويم المعدني و ال ceramic وال aligner وأحدث التقنيات في مجال تقويم الأسنان."
+                            : "You will be trained on metal braces, ceramic braces, aligners, and the latest techniques in the field of orthodontics."
+                    }
+                </p>
+            </div>
+    
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-7 w-7">
+                        <path d="M12 7v14"></path>
+                        <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "توفير المواد التعليمية" : "Educational Materials Provided" }
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { 
+                        isCurrentLangAr ?
+                            "سنوفر لك جميع الكتب والماتيريال والأدوات التي ستحتاجها خلال فترة البرنامج التدريبي."
+                            : "We will provide all the books, materials, and tools you’ll need during the training program."
+                    }
+                </p>
+            </div>
+    
+            <div class="group flex h-full flex-col p-6 max-w-md w-full shadow-sm rounded-2xl" dir="auto">
+                <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award h-7 w-7">
+                        <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
+                        <circle cx="12" cy="8" r="6"></circle>
+                    </svg>
+                </div>
+                <h3 class="mb-3 text-xl font-bold">
+                    { isCurrentLangAr ? "إشراف متخصص" : "Expert Supervision" }
+                </h3>
+                <p class="mb-6 text-gray-600">
+                    { 
+                        isCurrentLangAr ? 
+                            "كل هذا تحت إشراف استشاريين حاصلين على الزمالة البريطانية في تقويم الأسنان وذوي خبرة طويلة."
+                            : "All of this will be under the supervision of consultants with British Fellowship in Orthodontics and extensive experience."
+                    }
+                </p>
             </div>
         </div>
     </section>
 
-    <hr class="w-8/10 max-w-32 border-2 rounded-full border-navy-600">
 
 
-
-    <Card 
-        {isCurrentLangAr}
-        data={{
-            img: {
-                src: orthodonticsMembershipSVG,
-                alt: "Membership in Orthodontics"
-            },
-            button: {
-                text: {
-                    en: "Learn more",
-                    ar: "تعلم المزيد"
-                },
-                arrowVisible: true,
-            }
-        }}
-    > 
-        {#snippet title()}
-            <h2 class="text-2xl font-bold text-center">
-                { isCurrentLangAr ? "ما هي الزمالة البريطانية؟" : "What is the British Orthodontics Membership?" }
+    <section id="training_plan" class="w-full bg-gradient-to-b from-blue-50 to-white py-24 md:py-32 font-tajawal">
+        <div class="mx-auto mb-16 max-w-2xl text-center">
+            <TextMark>
+                { isCurrentLangAr ? "خطة التدريب" : "Training Plan" }
+            </TextMark>
+            <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                { isCurrentLangAr ? "رحلتك نحو" : "Your Journey towards" }
+                <span class="text-primary">
+                    { isCurrentLangAr ? "الزمالة البريطانية" : "The British Fellowship" }
+                </span>
             </h2>
-        {/snippet}
-
-        {#snippet description()}
-            <p class={[
-                isCurrentLangAr ? "mr-4" : "ml-4", 
-                "w-full",
-                "md:w-9/10",
-                ]}
-            >
-                {
-                    isCurrentLangAr ? 
-                        "الزمالة البريطانية لطب الأسنان هي برنامج تدريبي متقدم ومُعتمد يُقدم من قبل الكليات الملكية والجمعيات البريطانية المعنية بطب الأسنان، مثل الكلية الملكية للجراحين في إنجلترا، إدنبرة، أو أيرلندا. تهدف الزمالة إلى تحسين المهارات السريرية والأكاديمية للأطباء ومساعدتهم على تحقيق مستويات عالية من التميز المهني." 
-                        : "The British Fellowship in Dentistry is an advanced and accredited training program offered by the Royal Colleges and British dental associations, such as the Royal College of Surgeons in England, Edinburgh, or Ireland. The fellowship aims to enhance clinicians' clinical and academic skills and support them in achieving high levels of professional excellence."
-                }
-            </p>
-        {/snippet}
-    </Card>
-
-
-
-    <Card 
-        {isCurrentLangAr}
-        data={{
-            flip: true,
-            img: {
-                src: orthodonticsMembershipSVG,
-                alt: "Membership in Orthodontics"
-            },
-            button: {
-                text: {
-                    en: "Enroll Now",
-                    ar: "سجل الآن"
-                },
-                link: '/contact-us',
-                arrowVisible: true,
-            }
-        }}
-    >
-        {#snippet title()}
-            <h2 class="text-2xl font-bold text-center">
-                { isCurrentLangAr ? "لماذا يجب أن تسجل الآن؟" : "Why Choose Our Program?" }
-            </h2>
-        {/snippet}
-        {#snippet description()}
-            <ul 
-                class={[
-                    isCurrentLangAr ? "mr-8" : "ml-2", 
-                    "w-full", 
-                    "md:w-9/10",
-                    "list-disc",
-                ]}
-            >
-                {#if isCurrentLangAr}
-                    <li>تدريب عملي حصري: لا مزيد من التعلم النظري فقط، ستعالج 20 مريضًا حقيقيًا بإشراف نخبة من المتخصصين.</li>
-                    <li>مرونة كاملة لأطباء الخليج: تابع دراستك وأنت تعمل، مع نظام متابعة عملي في مصر كل 4-5 أسابيع.</li>
-                    <li>تحضير شامل للزمالة: منهج متكامل، محاضرات تفاعلية، ودعم مستمر لضمان اجتيازك للاختبار بثقة.</li>
-                    <li>دعم من أفضل الخبراء: تعلم مباشرة من استشاريي تقويم الأسنان المعتمدين، واكتسب أسرار النجاح في المجال.</li>
-                    <li>فرصة حصرية – عدد محدود من المقاعد! لا تضيع الوقت، فالفرص لا تتكرر كثيرًا! 🕒</li>
-                {:else}
-                    <li>Comprehensive theoretical training covering the British Fellowship curricula (6 months online).</li>
-                    <li>Intensive practical training, including work on at least 20 orthodontic cases.</li>
-                    <li>Supervision by accredited consultants who hold the British Fellowship.</li>
-                    <li>Free and fully equipped accommodation.</li>
-                    <li>Direct practical support with assistance from onsite staff during work.</li>
-                {/if}
-            </ul>
-        {/snippet}
-    </Card>
-    
-    <Card 
-        {isCurrentLangAr}
-        data={{
-            img: {
-                src: orthodonticsMembershipSVG,
-                alt: "Membership in Orthodontics"
-            },
-            button: {
-                text: {
-                    en: "Enroll Now",
-                    ar: "سجل الآن"
-                },
-                link: '/contact-us',
-                arrowVisible: true,
-            }
-        }}
-    >
-        {#snippet title()}
-            <h2 class="text-2xl font-bold text-center">
-                { isCurrentLangAr ? "ماذا ستحصل عليه عند التسجيل؟" : "Why Choose Our Program?" }
-            </h2>
-        {/snippet}
-        {#snippet description()}
-            <ul 
-                class={[
-                    isCurrentLangAr ? "mr-8" : "ml-2", 
-                    "w-full", 
-                    "md:w-9/10",
-                    "list-disc",
-                ]}
-            >
-                {#if isCurrentLangAr}
-                    <li>برنامج تدريبي شامل لمدة 3 سنوات – 6 أشهر محاضرات أونلاين، وسنتان ونصف من التطبيق العملي.</li>
-                    <li>تجربة فريدة من نوعها – ستعمل على حالات حقيقية من اليوم الأول.</li>
-                    <li>دروس مباشرة ومسجلة – تابع التعلم وفق جدولك الزمني.</li>
-                    <li>فرصة استثنائية للأطباء العاملين في الخليج – بدون الحاجة لترك وظيفتك!</li>
-                    <li>شهادة إتمام معتمدة تؤهلك لاجتياز اختبار الزمالة البريطانية.</li>
-                {:else}
-                    <li>Comprehensive theoretical training covering the British Fellowship curricula (6 months online).</li>
-                    <li>Intensive practical training, including work on at least 20 orthodontic cases.</li>
-                    <li>Supervision by accredited consultants who hold the British Fellowship.</li>
-                    <li>Free and fully equipped accommodation.</li>
-                    <li>Direct practical support with assistance from onsite staff during work.</li>
-                {/if}
-            </ul>
-        {/snippet}
-    </Card>
-    
-
-    <section class="w-full flex flex-col justify-center items-center gap-8">
-        <hr class="w-8/10 max-w-48 border rounded-full border-navy-900">
-        {#key isCurrentLangAr}
-            <h2 class="text-2xl font-bold" in:fly={{ y: -10, duration: 200 }}>
+            <p class="text-lg text-gray-600">
                 {
                     isCurrentLangAr ?
-                        "الأسئلة الشائعة" : 
-                        "Frequent Questions"
+                        "خطوات واضحة ومدروسة تضمن لك الوصول إلى هدفك بكفاءة وفعالية"
+                        : "Clear and well-structured steps that lead you towards your goal with efficiency and effectiveness"
                 }
+                
+            </p>
+        </div>
+        <div class="relative mx-auto max-w-4xl px-4">
+            <!-- Timeline Line -->
+            <div class="absolute left-4 top-0 h-full w-0.5 bg-primary/20 md:left-1/2 md:-ml-0.5"></div>
+
+            <!-- Timeline Items -->
+            <div class="space-y-16">
+
+                <!-- Step 1 -->
+              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span class="text-lg font-bold">1</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">
+                        { isCurrentLangAr ? "المرحلة الأولى: الأساسيات النظرية" : "Stage One: Theoretical Basics" }
+                    </h3>
+                    <p class="text-gray-600">
+                        {
+                            isCurrentLangAr ? 
+                                "نبدأ معك من الصفر، بمحاضرات نظرية أونلاين في تقويم الأسنان تغطي كل الأساسيات، وتستمر لمدة 6 أشهر بطريقة تفاعلية ومنظمة، حتى تمتلك قاعدة علمية قوية."
+                                : "We start with you from scratch, through online theoretical lectures in orthodontics covering all the fundamentals. This phase lasts for 6 months in an interactive and organized way, ensuring you build a strong scientific foundation."
+                        }
+                    </p>
+                  </div>
+                </div>
+
+                <div class="md:w-1/2"></div>
+              </div>
+              <!-- Step 2 -->
+              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                <div class="mb-10 md:mb-0 md:w-1/2"></div>
+
+                <div class="md:w-1/2">
+                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
+                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span class="text-lg font-bold">2</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">
+                        { isCurrentLangAr ? "المرحلة الثانية: التدريب العملي" : "Stage Two: Practical Training" }
+                    </h3>
+                    <p class="text-gray-600">
+                        {
+                            isCurrentLangAr ?
+                                "بعد اجتياز اختبار التقييم، تنتقل للمرحلة العملية حيث تبدأ في استلام حالاتك تحت إشراف مباشر. يتم مناقشة خطة العلاج بالتفصيل لكل حالة مع الاستشاري في سيمنارات أونلاين تفاعلية، ثم تبدأ في تنفيذ الخطة العلاجية بنفسك، خطوة بخطوة."
+                                : "After passing the assessment test, you move on to the practical phase, where you begin handling your own cases under direct supervision. Each treatment plan is thoroughly discussed with a consultant in interactive online seminars, after which you start executing the treatment plan yourself, step by step."
+                        }
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span class="text-lg font-bold">3</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">
+                        { isCurrentLangAr ? "المرحلة الثالثة: الاستعداد لـ MFDS Part 1" : "Stage Three: Preparation for MFDS Part 1" }
+                    </h3>
+                    <p class="text-gray-600">
+                        {
+                            isCurrentLangAr ?
+                                "في الستة أشهر التالية، تبدأ رحلة الاستعداد لاختبار MFDS Part 1 من الكلية الملكية – من خلال محاضرات أسبوعية مباشرة أونلاين، تساعدك على فهم نمط الأسئلة والاستعداد الكامل للاختبار."
+                                : "In the following six months, your journey of preparation for the MFDS Part 1 exam by the Royal College begins – through weekly live online lectures that help you understand the exam pattern and prepare thoroughly."
+                        }
+                    </p>
+                  </div>
+                </div>
+
+                <div class="md:w-1/2"></div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                <div class="mb-10 md:mb-0 md:w-1/2"></div>
+
+                <div class="md:w-1/2">
+                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
+                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span class="text-lg font-bold">4</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">
+                        { isCurrentLangAr ? "المرحلة الرابعة: التحضير المتقدم" : "Stage Four: Advanced Preparation" }
+                    </h3>
+                    <p class="text-gray-600">
+                        {
+                            isCurrentLangAr ? 
+                                "بعد التقديم على Part 1، تنتقل إلى التدريب المكثف على MFDS Part 2، ثم بعدها تبدأ الاستعداد لاختبار FOrth Part A بعد مرور سنتين من بداية البرنامج، يليه التحضير لاختبار FOrth Part B، وتستمر المتابعة والتدريب حتى نهاية البرنامج."
+                                : "After applying for Part 1, you move on to intensive training for MFDS Part 2. Then, you start preparing for the FOrth Part A exam two years after the start of the program, followed by preparation for the FOrth Part B exam. Supervision and training continue until the end of the program."
+                        }
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Final Step -->
+              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span class="text-lg font-bold">5</span>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">
+                        { isCurrentLangAr ? "الشهادة المعتمدة" : "Accredited Certificate" }
+                    </h3>
+                    <p class="text-gray-600">
+                        {
+                            isCurrentLangAr ?
+                                "خلال هذه الرحلة، ستحصل على شهادة تدريب معتمدة تثبت مراحل تدريبك العملي، وهي مطلوبة أثناء تقديمك الرسمي للزمالة البريطانية."
+                                : "Throughout this journey, you will receive an accredited training certificate documenting the stages of your practical training, which is required when officially applying for the British Fellowship."
+                        }
+                    </p>
+                  </div>
+                </div>
+
+                <div class="md:w-1/2"></div>
+              </div>
+            </div>
+          </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="frequent_questions" class="w-full flex flex-col justify-center items-center gap-8">
+
+        <div class="mx-auto mb-16 max-w-2xl text-center p-4 gap-4">
+            <TextMark>
+                { isCurrentLangAr ? "الاسئلة الشائعة" : "Frequent Questions" }
+            </TextMark>
+            <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl leading-14">
+                { isCurrentLangAr ? "كل ما تريد معرفته" : "Everything you need to know" }
+                <span class="text-primary">
+                    { isCurrentLangAr ? "عن البرنامج" : "About the Program" }
+                </span>
             </h2>
-        {/key}
+            <p class="text-lg text-gray-600">
+                {
+                    isCurrentLangAr ? 
+                        "إجابات على الأسئلة الأكثر شيوعاً حول برنامج الزمالة البريطانية في تقويم الأسنان"
+                        : "Answers to the most common questions about the British Fellowship Program"
+                }
+            </p>
+        </div>
         
         <FrequentQuestionsSection {isCurrentLangAr} />
 
@@ -296,6 +470,45 @@
 
     </section>
 
+    
+    <section id="enroll_now" class="relative w-full mx-auto max-w-5xl flex flex-col justify-center items-center font-tajawal" dir="auto">
+        <div class="flex justify-center items-center font-bold text-2xl w-38 h-14 bg-gradient-to-b from-white to-blue-100 text-primary absolute -top-4 left-1/2 -translate-x-1/2 rounded-full shadow-md">
+            { isCurrentLangAr ? "سجل الآن" : "Enroll Now"}
+        </div>
+        <div class="w-9/10 mt-3 flex flex-col justify-center p-8 md:p-12 rounded-3xl bg-primary overflow-hidden">
+            <h2 class="mb-4 mt-6 md:mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                { isCurrentLangAr ? "ابدأ رحلتك نحو الزمالة البريطانية اليوم" : "Start Your Journey to the British Fellowship Today" }
+            </h2>
+            <p class="mb-8 text-lg text-white/80">
+                {
+                    isCurrentLangAr ? 
+                        "سجل الآن واحصل على استشارة مجانية لمناقشة تفاصيل البرنامج"
+                        : "Enroll Now and Get a Free Consultation to Discuss Program Details"
+                }
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row">
+                <a href="https://wa.me/+201115283512" target="_blank">
+                    <button 
+                        class="p-4 px-6 w-full md:max-w-xs min-h-8 cursor-pointer font-bold text-lg rounded-full flex justify-between items-center gap-3 
+                            bg-[#e5f0f5] hover:bg-[#0382c6] shadow-md transition duration-200 text-primary hover:text-white text-left text-[clamp(10px,18px,20px)]"
+                        class:text-right={ isCurrentLangAr }
+                        dir="auto"
+                    >
+                        {
+                            isCurrentLangAr ? 
+                                "تواصل معنا عبر واتساب" : 
+                                "Contact us via Whatsapp"
+                        }
+
+                        <svg class="shrink-0" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
+                            <path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"></path><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"></path><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"></path><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"></path><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+<!-- 
     <section class="w-full min-h-96 flex justify-center">
         <div class="w-9/10 max-w-[1000px] bg-navy-50 drop-shadow-lg h-full flex justify-center items-center flex-col gap-8 rounded-lg p-8">
             {#key isCurrentLangAr}
@@ -350,7 +563,7 @@
                 {/key}
             </div>
         </div>
-    </section>
+    </section> -->
 </main>
 
 

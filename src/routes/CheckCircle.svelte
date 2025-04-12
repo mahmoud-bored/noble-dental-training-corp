@@ -1,0 +1,14 @@
+<script lang="ts">
+    const { children } = $props()
+</script>
+<div class="flex items-center gap-2" dir="auto">
+    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big h-5 w-5 text-primary">
+            <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+            <path d="m9 11 3 3L22 4"></path>
+        </svg>
+    </div>
+    <span class="text-sm font-medium">
+        {@render children()}
+    </span>
+</div>
