@@ -13,6 +13,7 @@
   import TextMark from "./TextMark.svelte";
   import HeadNumber from "./HeadNumber.svelte";
   import { text } from "@sveltejs/kit";
+  import ChangeLanguageButton from "./ChangeLanguageButton.svelte";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
 
 
@@ -96,7 +97,6 @@
             "font-tajawal",
             "px-8"
             ]}>
-
             <div class="max-w-[400px] w-full md:w-4/10">
                 <div class="w-full aspect-square bg-[#eaeaea] shadow-2xl rounded-2xl"></div>
             </div>
