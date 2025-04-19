@@ -11,6 +11,8 @@
     import { page } from "$app/state";
   import CheckCircle from "./CheckCircle.svelte";
   import TextMark from "./TextMark.svelte";
+  import HeadNumber from "./HeadNumber.svelte";
+  import { text } from "@sveltejs/kit";
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
 
 
@@ -116,9 +118,12 @@
                     
                 </p>
                 <div>
-                    <Button>
-                        { isCurrentLangAr ? "سجل الآن" : "Enroll Now" }
-                    </Button>
+                    <a href="#enroll_now">
+                        <Button>
+                            { isCurrentLangAr ? "سجل الآن" : "Enroll Now" }
+                        </Button>
+
+                    </a>
                 </div>
                 <div class="flex flex-col gap-2">
                     <div class="grid grid-rows-2 grid-cols-2 space-y-2 place-items-baseline">
@@ -285,6 +290,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <section id="training_plan" class="w-full bg-gradient-to-b from-blue-50 to-white py-24 md:py-32 font-tajawal">
         <div class="mx-auto mb-16 max-w-2xl text-center">
             <TextMark>
@@ -310,121 +331,136 @@
             <div class="absolute left-4 top-0 h-full w-0.5 bg-primary/20 md:left-1/2 md:-ml-0.5"></div>
 
             <!-- Timeline Items -->
-            <div class="space-y-16">
+            <div class="space-y-8">
 
                 <!-- Step 1 -->
-              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
-                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
-                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
-                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <span class="text-lg font-bold">1</span>
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                            <HeadNumber>1</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
+                                { isCurrentLangAr ? "الفصل الدراسي الأول: الأساسيات النظرية" : "First Semester: Theoretical Basics" }
+                            </h3>
+                            <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
+                                {
+                                    isCurrentLangAr ? 
+                                        "نبدأ معك من الصفر، بمحاضرات نظرية أونلاين في تقويم الأسنان تغطي كل الأساسيات، وتستمر لمدة 6 أشهر بطريقة تفاعلية ومنظمة، حتى تمتلك قاعدة علمية قوية."
+                                        : "We start with you from scratch, through online theoretical lectures in orthodontics covering all the fundamentals. This phase lasts for 6 months in an interactive and organized way, ensuring you build a strong scientific foundation."
+                                }
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="mb-3 text-xl font-bold">
-                        { isCurrentLangAr ? "المرحلة الأولى: الأساسيات النظرية" : "Stage One: Theoretical Basics" }
-                    </h3>
-                    <p class="text-gray-600">
-                        {
-                            isCurrentLangAr ? 
-                                "نبدأ معك من الصفر، بمحاضرات نظرية أونلاين في تقويم الأسنان تغطي كل الأساسيات، وتستمر لمدة 6 أشهر بطريقة تفاعلية ومنظمة، حتى تمتلك قاعدة علمية قوية."
-                                : "We start with you from scratch, through online theoretical lectures in orthodontics covering all the fundamentals. This phase lasts for 6 months in an interactive and organized way, ensuring you build a strong scientific foundation."
-                        }
-                    </p>
-                  </div>
+                    <div class="md:w-1/2"></div>
                 </div>
 
-                <div class="md:w-1/2"></div>
-              </div>
-              <!-- Step 2 -->
-              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
-                <div class="mb-10 md:mb-0 md:w-1/2"></div>
+                 <!-- Step 2 -->
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 md:mb-0 md:w-1/2"></div>
 
-                <div class="md:w-1/2">
-                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
-                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <span class="text-lg font-bold">2</span>
+                    <div class="md:w-1/2">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
+                            <HeadNumber>2</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold">
+                                { isCurrentLangAr ? "الفصل الدراسي الثاني: التدريب العملي" : "Second Semester: Hands-On Training & MFDS Part 1 Prep" }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    isCurrentLangAr ?
+                                        "بعد اجتياز اختبار التقييم، تنتقل للمرحلة العملية حيث تبدأ في استلام حالاتك تحت إشراف مباشر. يتم مناقشة خطة العلاج بالتفصيل لكل حالة مع الاستشاري في سيمنارات أونلاين تفاعلية، ثم تبدأ في تنفيذ الخطة العلاجية بنفسك، خطوة بخطوة."
+                                        : "After passing the assessment exam, you move on to the practical phase, where you begin handling your own clinical cases under direct supervision. Each case's treatment plan is discussed in detail with a consultant through interactive online seminars, and then you start implementing the treatment step-by-step yourself."
+                                }
+                            </p>
+                            <p class="text-gray-600">
+                                {
+                                    isCurrentLangAr ?
+                                        "ثم تبدأ رحلة الاستعداد لاختبار MFDS Part 1 من الكلية الملكية – من خلال محاضرات أسبوعية مباشرة أونلاين، تساعدك على فهم نمط الأسئلة والاستعداد الكامل للاختبار."
+                                        : "After that, you begin your preparation journey for the MFDS Part 1 exam by the Royal College through live weekly online lectures designed to help you understand the question patterns and be fully prepared for the exam."
+                                }
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="mb-3 text-xl font-bold">
-                        { isCurrentLangAr ? "المرحلة الثانية: التدريب العملي" : "Stage Two: Practical Training" }
-                    </h3>
-                    <p class="text-gray-600">
-                        {
-                            isCurrentLangAr ?
-                                "بعد اجتياز اختبار التقييم، تنتقل للمرحلة العملية حيث تبدأ في استلام حالاتك تحت إشراف مباشر. يتم مناقشة خطة العلاج بالتفصيل لكل حالة مع الاستشاري في سيمنارات أونلاين تفاعلية، ثم تبدأ في تنفيذ الخطة العلاجية بنفسك، خطوة بخطوة."
-                                : "After passing the assessment test, you move on to the practical phase, where you begin handling your own cases under direct supervision. Each treatment plan is thoroughly discussed with a consultant in interactive online seminars, after which you start executing the treatment plan yourself, step by step."
-                        }
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Step 3 -->
-              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
-                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
-                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
-                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <span class="text-lg font-bold">3</span>
-                    </div>
-                    <h3 class="mb-3 text-xl font-bold">
-                        { isCurrentLangAr ? "المرحلة الثالثة: الاستعداد لـ MFDS Part 1" : "Stage Three: Preparation for MFDS Part 1" }
-                    </h3>
-                    <p class="text-gray-600">
-                        {
-                            isCurrentLangAr ?
-                                "في الستة أشهر التالية، تبدأ رحلة الاستعداد لاختبار MFDS Part 1 من الكلية الملكية – من خلال محاضرات أسبوعية مباشرة أونلاين، تساعدك على فهم نمط الأسئلة والاستعداد الكامل للاختبار."
-                                : "In the following six months, your journey of preparation for the MFDS Part 1 exam by the Royal College begins – through weekly live online lectures that help you understand the exam pattern and prepare thoroughly."
-                        }
-                    </p>
-                  </div>
                 </div>
 
-                <div class="md:w-1/2"></div>
-              </div>
-
-              <!-- Step 4 -->
-              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
-                <div class="mb-10 md:mb-0 md:w-1/2"></div>
-
-                <div class="md:w-1/2">
-                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
-                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <span class="text-lg font-bold">4</span>
+                <!-- Step 3 -->
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                            <HeadNumber>3</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
+                                { isCurrentLangAr ? " الفصل الدراسي الثالث: العمل السريري المتقدم والتركيز على اختبار MFDS الجزء الثاني" : "Third Semester: Advanced Clinical Work & MFDS Part 2 Focus" }
+                            </h3>
+                            <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
+                                {
+                                    isCurrentLangAr ?
+                                        "في السنه الثانية تنتقل إلى التدريب المكثف على MFDS Part 2 مع استمرار استلام حالات التقويم ومناقشتها في السيمينارات."
+                                        : "In the second year, the focus shifts to intensive training for MFDS Part 2, while you continue receiving and discussing orthodontic cases during the ongoing seminars."
+                                }
+                            </p>
+                        </div>
                     </div>
-                    <h3 class="mb-3 text-xl font-bold">
-                        { isCurrentLangAr ? "المرحلة الرابعة: التحضير المتقدم" : "Stage Four: Advanced Preparation" }
-                    </h3>
-                    <p class="text-gray-600">
-                        {
-                            isCurrentLangAr ? 
-                                "بعد التقديم على Part 1، تنتقل إلى التدريب المكثف على MFDS Part 2، ثم بعدها تبدأ الاستعداد لاختبار FOrth Part A بعد مرور سنتين من بداية البرنامج، يليه التحضير لاختبار FOrth Part B، وتستمر المتابعة والتدريب حتى نهاية البرنامج."
-                                : "After applying for Part 1, you move on to intensive training for MFDS Part 2. Then, you start preparing for the FOrth Part A exam two years after the start of the program, followed by preparation for the FOrth Part B exam. Supervision and training continue until the end of the program."
-                        }
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Final Step -->
-              <div class="relative md:flex md:items-center md:justify-between" dir="auto">
-                <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
-                  <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
-                    <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <span class="text-lg font-bold">5</span>
-                    </div>
-                    <h3 class="mb-3 text-xl font-bold">
-                        { isCurrentLangAr ? "الشهادة المعتمدة" : "Accredited Certificate" }
-                    </h3>
-                    <p class="text-gray-600">
-                        {
-                            isCurrentLangAr ?
-                                "خلال هذه الرحلة، ستحصل على شهادة تدريب معتمدة تثبت مراحل تدريبك العملي، وهي مطلوبة أثناء تقديمك الرسمي للزمالة البريطانية."
-                                : "Throughout this journey, you will receive an accredited training certificate documenting the stages of your practical training, which is required when officially applying for the British Fellowship."
-                        }
-                    </p>
-                  </div>
+                    <div class="md:w-1/2"></div>
                 </div>
 
-                <div class="md:w-1/2"></div>
-              </div>
+                <!-- Step 4 -->
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 md:mb-0 md:w-1/2"></div>
+
+                    <div class="md:w-1/2">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
+                            <HeadNumber>4</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold">
+                                { isCurrentLangAr ? " الفصل الدراسي الرابع: الاستعداد المنهجي لاختبار Forth الجزء A" : "Fourth Semester: Structured Preparation for Part A of the Forth Exam" }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    isCurrentLangAr ? 
+                                        "ثم نبدأ في الاستعداد لاختبار Forth part A\nوفيه يتم شرح كامل المواضيع المشمولة في الاختبار مع التدريب على بنك اسئلة من الاختبارات السابقه وتهيئتك لتكون على استعداد تام للاختبار."
+                                        : "Here, we begin preparation for Forth Part A of the exam. All exam-related topics are thoroughly explained, and you receive focused training using question banks from previous exams to ensure you’re fully ready to take the test."
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 flex md:mb-0 md:w-1/2 md:justify-end">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
+                            <HeadNumber>5</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
+                                { isCurrentLangAr ? " الفصل الدراسي الخامس: التدريب العملي لاختبار Forth الجزء B" : "Fifth Semester: Practical Training for Forth Part B" }
+                            </h3>
+                            <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
+                                {
+                                    isCurrentLangAr ?
+                                        "هنا نبدأ في التدريب العملي على جميع اجزاء اختبار Forth part B\nوفيه يتم مراجعة المواضيع ذات العلاقة بهذا الاختبار والتدريب المكثف على جميع أجزاء الاختبار وهي ال diagnosis و ال mechanics و ال communication وتهيئتك لتكون على استعداد تام لاجتياز الاختبار."
+                                        : "This phase is all about hands-on preparation for Forth Part B. You'll review all topics related to the exam and go through intensive training on all its components: Diagnosis, Mechanics, and Communication. Our goal is to ensure you are completely equipped to pass the exam with confidence."
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2"></div>
+                </div>
+
+                <div class="relative md:flex md:items-center md:justify-between" dir="auto">
+                    <div class="mb-10 md:mb-0 md:w-1/2"></div>
+    
+                    <div class="md:w-1/2">
+                        <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
+                            <HeadNumber>6</HeadNumber>
+                            <h3 class="mb-3 text-xl font-bold">
+                                { isCurrentLangAr ? "  الفصل الدراسي السادس: إنهاء التدريب والحصول على شهادة الزمالة" : "Sixth Semester: Finalization & Fellowship Certification" }
+                            </h3>
+                            <p class="text-gray-600">
+                                {
+                                    isCurrentLangAr ? 
+                                        "وفي هذا الجزء تستكمل التدريبات وتبدأ في إنهاء حالات التقويم وبنهايته تستلم شهادة من المركز باتمامك التدريب لتقديمها للكلية الملكية لتحصل على شهادة الزمالة البريطانية لتقويم الأسنان."
+                                        : "In this final stage, you continue your clinical training and begin completing your orthodontic cases. By the end of the semester, you’ll receive a certificate from the center confirming the completion of your training—ready to submit to the Royal College in pursuit of your British Orthodontic Fellowship certification."
+                                }
+                            </p>
+                        </div>
+                    </div>
+                  </div>
             </div>
           </div>
     </section>
