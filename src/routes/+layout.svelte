@@ -4,6 +4,7 @@
     import { langPreference } from "./stores.svelte";
     import { page } from "$app/state";
     import Button from "./Button.svelte";
+  import ChangeLanguageButton from "./ChangeLanguageButton.svelte";
     let { children } = $props();
     
     function getLangPref(): void {
@@ -67,7 +68,6 @@
         </div>
     </div>
 </nav>
-
 
 {@render children()}
 

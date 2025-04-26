@@ -7,8 +7,8 @@
         document.cookie = `lang=${lang}; max-age=31536000; path=/`
     }
 </script>
-<div>
-    <div class="relative h-10 min-w-24 md:w-28 hidden md:flex justify-center items-center rounded-full shadow-md text-lg font-bold" >
+<div dir="ltr">
+    <div class="relative h-10 min-w-20 w-28 flex justify-center items-center rounded-full shadow-md text-lg font-bold" >
         <button 
             class={[
                 "peer/en", 

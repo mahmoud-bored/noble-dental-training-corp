@@ -1,19 +1,14 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
     import { fade, fly } from "svelte/transition";
     import { langPreference } from "./stores.svelte";
-    import orthodonticsMembershipSVG from "$lib/assets/orthodontics-membership.svg"
-    import Card from "./Card.svelte";
-    import CollapseCard from "./CollapseCard.svelte";
-    import ContactForm from "./ContactForm.svelte";
     import FrequentQuestionsSection from "./FrequentQuestionsSection.svelte";
     import Button from "./Button.svelte";
     import { page } from "$app/state";
-  import CheckCircle from "./CheckCircle.svelte";
-  import TextMark from "./TextMark.svelte";
-  import HeadNumber from "./HeadNumber.svelte";
-  import { text } from "@sveltejs/kit";
-  import ChangeLanguageButton from "./ChangeLanguageButton.svelte";
+    import CheckCircle from "./CheckCircle.svelte";
+    import TextMark from "./TextMark.svelte";
+    import HeadNumber from "./HeadNumber.svelte";
+    import ChangeLanguageButton from "./ChangeLanguageButton.svelte";
+    import coverImg from "$lib/assets/cover-img.png"
     let isCurrentLangAr = $derived(langPreference.lang == 'ar')
 
 
@@ -29,7 +24,7 @@
         }
     })
 </script>
-
+<!-- 
 {#if loading}   
     <div class="fixed left-0 top-0 w-full h-full bg-[#00000080] z-20" transition:fade={{ duration: 200 }}></div>
     <div class="fixed left-0 top-0 w-full h-full flex justify-center items-center z-30" in:fly={{ y: 20, duration: 200 }} out:fly={{ y: 20, duration: 200 }}>
@@ -79,11 +74,12 @@
                 
         </div> 
     </div>
-{/if}
+{/if} -->
     
 <main class="h-full w-full flex flex-col items-center gap-10">
 
     <section id="home" class="w-full flex justify-center items-center bg-gradient-to-b from-blue-50 to-white">
+
         <div class={[
             "max-w-[1400px]", 
             "w-full", 
@@ -93,14 +89,22 @@
             "gap-12",
             "flex-col-reverse",
             isCurrentLangAr ? "md:flex-row" : "md:flex-row-reverse",
-            "my-32",
+            "mt-16",
+            "mb-28",
             "font-tajawal",
             "px-8"
             ]}>
             <div class="max-w-[400px] w-full md:w-4/10">
-                <div class="w-full aspect-square bg-[#eaeaea] shadow-2xl rounded-2xl"></div>
+                <div class="w-full aspect-square bg-white shadow-2xl rounded-2xl flex justify-center items-center p-8 border-3 border-primary">
+                    <img src="{coverImg}" alt="">
+                </div>
             </div>
-            <div class="flex flex-col gap-6" dir="auto">
+            <div class="flex flex-col gap-6" dir="{ isCurrentLangAr ? "rtl" : "ltr" }">
+                {#key isCurrentLangAr}
+                    <div in:fly={{ x: isCurrentLangAr ? 20 : -20, y: -10, duration: 400 }} class={["relative", isCurrentLangAr ? "-right-1" : "right-1.5", "w-full", "flex", "justify-start"]}>
+                        <ChangeLanguageButton {isCurrentLangAr}/>
+                    </div>
+                {/key}
                 <TextMark>2025</TextMark>
                 <h1 class="text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl space-y-4">
                     { isCurrentLangAr ? "الزمالة البريطانية" : "The British Fellowship" }
@@ -339,7 +343,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
                             <HeadNumber>1</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
-                                { isCurrentLangAr ? "الفصل الدراسي الأول: الأساسيات النظرية" : "First Semester: Theoretical Basics" }
+                                { isCurrentLangAr ? "Semester 1: الأساسيات النظرية" : "First Semester: Theoretical Basics" }
                             </h3>
                             <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
                                 {
@@ -361,7 +365,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
                             <HeadNumber>2</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold">
-                                { isCurrentLangAr ? "الفصل الدراسي الثاني: التدريب العملي" : "Second Semester: Hands-On Training & MFDS Part 1 Prep" }
+                                { isCurrentLangAr ? "Semester 2: التدريب العملي" : "Second Semester: Hands-On Training & MFDS Part 1 Prep" }
                             </h3>
                             <p class="text-gray-600">
                                 {
@@ -387,7 +391,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
                             <HeadNumber>3</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
-                                { isCurrentLangAr ? " الفصل الدراسي الثالث: العمل السريري المتقدم والتركيز على اختبار MFDS الجزء الثاني" : "Third Semester: Advanced Clinical Work & MFDS Part 2 Focus" }
+                                { isCurrentLangAr ? "Semester 3: العمل السريري المتقدم والتركيز على اختبار MFDS الجزء الثاني" : "Third Semester: Advanced Clinical Work & MFDS Part 2 Focus" }
                             </h3>
                             <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
                                 {
@@ -409,7 +413,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
                             <HeadNumber>4</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold">
-                                { isCurrentLangAr ? " الفصل الدراسي الرابع: الاستعداد المنهجي لاختبار Forth الجزء A" : "Fourth Semester: Structured Preparation for Part A of the Forth Exam" }
+                                { isCurrentLangAr ? "Semester 4: الاستعداد المنهجي لاختبار Forth الجزء A" : "Fourth Semester: Structured Preparation for Part A of the Forth Exam" }
                             </h3>
                             <p class="text-gray-600">
                                 {
@@ -428,7 +432,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl md:text-right mr-1">
                             <HeadNumber>5</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold text-left" class:text-right={ isCurrentLangAr }>
-                                { isCurrentLangAr ? " الفصل الدراسي الخامس: التدريب العملي لاختبار Forth الجزء B" : "Fifth Semester: Practical Training for Forth Part B" }
+                                { isCurrentLangAr ? "Semester 5: التدريب العملي لاختبار Forth الجزء B" : "Fifth Semester: Practical Training for Forth Part B" }
                             </h3>
                             <p class="text-gray-600 text-left" class:text-right={ isCurrentLangAr }>
                                 {
@@ -449,7 +453,7 @@
                         <div class="max-w-md rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl mr-1">
                             <HeadNumber>6</HeadNumber>
                             <h3 class="mb-3 text-xl font-bold">
-                                { isCurrentLangAr ? "  الفصل الدراسي السادس: إنهاء التدريب والحصول على شهادة الزمالة" : "Sixth Semester: Finalization & Fellowship Certification" }
+                                { isCurrentLangAr ? "Semester 6: إنهاء التدريب والحصول على شهادة الزمالة" : "Sixth Semester: Finalization & Fellowship Certification" }
                             </h3>
                             <p class="text-gray-600">
                                 {

@@ -45,12 +45,12 @@
             </svg>
         </button>
         
-        <div 
+        <button 
             class={[
                 "overflow-hidden", 
                 "transition-all", 
                 "duration-300",
-                "shadow-md",
+                "shadow-lg",
                 "rounded-md",
                 "-translate-y-1",
                 "absolute",
@@ -60,6 +60,7 @@
                 "bg-white"
             ]}
             style="max-height: {collapsibleOpen ? cardMaxHeight + "px" : "0px"};"
+            onclick={() => collapsibleOpen = !collapsibleOpen}
         >
             <div 
                 bind:this={cardContent}
@@ -77,6 +78,6 @@
             <div class="w-full flex justify-center items-center mb-2 bg-white">
                 <hr class="w-1/4 border rounded-lg border-navy-900">
             </div>
-        </div>
+        </button>
     </div>
 {/key}
