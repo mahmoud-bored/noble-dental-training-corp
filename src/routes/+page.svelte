@@ -209,7 +209,7 @@
                 </h3>
                 <p class="mb-6 text-gray-600">
                     { isCurrentLangAr ? 
-                        "تدريب عملي على 20-40 حالة تغطي اغلب الحالات البسيطة والمتقدمة تحت إشراف استشاريين متخصصين."
+                        "تدريب عملي على عدد كبير من الحالات تغطي اغلب الحالات البسيطة والمتقدمة تحت إشراف استشاريين متخصصين."
                         : "Practical training on 20–40 cases, covering most simple and advanced scenarios under the supervision of specialized consultants."
                     }
                 </p>

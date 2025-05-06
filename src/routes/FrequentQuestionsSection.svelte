@@ -71,8 +71,8 @@
                         <span class="font-bold"> { isCurrentLangAr ? "الجزء العملي:" : "Practical Part:" } </span>
                             {
                                 isCurrentLangAr ?
-                                    "تدريب عملي على 40 حالة تقويم، يتم استلامها بالتدريج تحت إشراف نخبة من الاستشاريين."
-                                    : "Hands-on training on 40 orthodontic cases, gradually assigned under the supervision of a select group of consultants."
+                                    "تدريب عملي على عدد واسع من حالات التقويم، يتم استلامها بالتدريج تحت إشراف نخبة من الاستشاريين."
+                                    : "Hands-on training on a wide range of orthodontic cases, gradually assigned under the supervision of a select group of consultants."
                             }
                         </li>
                     <li>
@@ -104,7 +104,7 @@
                             isCurrentLangAr ? "mr-5" : "ml-5",
                         ]}
                     >
-                        <li>يتم استلام 40 حالة تقويمية حقيقية على مراحل وفقًا لمستوى الطبيب.</li>
+                        <li>يتم استلام حالات التقويم على مراحل وفقًا لمستوى الطبيب.</li>
                         <li>الحضور يكون في ورش عمل عملية أسبوعية، وبعدها يتم متابعة الحالات كل 4-5 أسابيع في العيادات.</li>
                         <li>يتم توفير جميع المواد والأدوات اللازمة للتدريب من قبل الأكاديمية.</li>
                     </ul>
@@ -114,7 +114,7 @@
                             isCurrentLangAr ? "mr-5" : "ml-5",
                         ]}
                     >
-                        <li>You will receive 40 real orthodontic cases gradually, according to your skill level.</li>
+                        <li>You will receive your orthodontic cases gradually, according to your skill level.</li>
                         <li>Attendance is required at weekly hands-on workshops, followed by follow-up sessions every 4–5 weeks in the clinics to monitor case progress.</li>
                         <li>All necessary materials and tools for the training are provided by the academy.</li>
                     </ul>
@@ -157,9 +157,8 @@
                             isCurrentLangAr ? "mr-5" : "ml-5",
                         ]}
                     >
-                        <li>شهادة التخرج وامتياز مع ترجمة إنجليزية.</li>
+                        <li>شهادة التخرج مع الترجمة إلى الإنجليزية.</li>
                         <li>صورة من جواز السفر وصورة شخصية.</li>
-                        <li>شهادة تدريب معتمدة من GMS Academy.</li>
                         <li>اجتياز مقابلة القبول (Interview) لتحديد مدى ملاءمتك للبرنامج.</li>
                     </ul>
                 {:else}
@@ -169,9 +168,8 @@
                             isCurrentLangAr ? "mr-5" : "ml-5",
                         ]}
                     >
-                        <li>Graduation and internship certificates with English translation.</li>
+                        <li>Graduation certificate with English translation.</li>
                         <li>A copy of your passport and a personal photo.</li>
-                        <li>An accredited training certificate from GMS Academy.</li>
                         <li>Successful completion of an admission interview to assess your suitability for the program.</li>
                     </ul>
                 {/if}
